@@ -4,17 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Index Ski</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/stylesheets/styles.css" />
   </head>
 
   <body>
-    <div id="container">
+    <div class="flex flex-container text-center top text-light">
+      <h1>Lorem ipsum dolor sit amet</h1>
+      <h2>
+        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+        et dolore magna aliqua. Non consectetur a erat nam at lectus urna duis
+        convallis. Vel risus commodo viverra maecenas accumsan lacus.
+      </h2>
+    </div>
+    <div class="flex resort-container">
       <% for (let resort of skiResorts) { if (resort.country === "US" ||
       resort.country === "CA") { %>
-      <p>
-        Resort:
-        <a href="/resorts/<%= resort.slug %>"><%= resort.name %></a> ---
-        Country: <%= resort.country %>
-      </p>
+      <a class="text-decoration-none" href="/resorts/<%= resort.slug %>"
+        ><div class="resort-card">
+          <h3 class="resort-card--title"><%= resort.name %></h3>
+          <p class="resort-card--body">
+            <%= resort.region %>, <%= resort.country %>
+          </p>
+        </div></a
+      >
       <% } }%>
     </div>
 
