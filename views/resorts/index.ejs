@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index Ski</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <% for (let resort of skiResorts) { if (resort.country === "US" ||
+      resort.country === "CA") { %>
+      <p>
+        Resort:
+        <a href="/resorts/<%= resort.slug %>"><%= resort.name %></a> ---
+        Country: <%= resort.country %>
+      </p>
+      <% } }%>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+  </body>
+</html>
