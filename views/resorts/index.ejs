@@ -15,6 +15,7 @@
 
     <!-- Custom Styles -->
     <link rel="stylesheet" href="/stylesheets/styles.css" />
+    <script src="javascripts/sortResorts.js"></script>
   </head>
 
   <body>
@@ -26,6 +27,15 @@
         convallis. Vel risus commodo viverra maecenas accumsan lacus.
       </h2>
     </div>
+    <!-- Sort Selector -->
+    <div class="flex sort-container">
+      <label for="sortCriteria">Sort By:</label>
+      <select id="sortCriteria" onchange="sortResorts(this.value)">
+        <option value="alphabetical">Alphabetical</option>
+        <option value="state">State</option>
+      </select>
+    </div>
+    <!-- Resort Container -->
     <div class="flex resort-container">
       <% for (let resort of skiResorts) { if (resort.country === "US" ||
       resort.country === "CA") { %>
