@@ -1,22 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Show Ski</title>
-  </head>
+<% layout("layouts/boilerplate") %>
+<main class="flex show-container">
+  <h1><%= resort.name %> <%= resort.region %></h1>
 
-  <body>
-    <h1><%= resort.name %> <%= resort.region %></h1>
-
-    <h2>Lift Status:</h2>
-    <ul>
+  <div class="flex resort-content-container">
+    <div class="card-container inline-block flow">
+      <h2>Lift Status</h2>
       <% for (const liftName in resort.lifts.status) { %>
-      <li>
-        <strong><%= liftName %>:</strong> <%= resort.lifts.status[liftName] %>
-      </li>
+      <div class="lift-card flex">
+        <h3 class="inline-block"><%= liftName %></h3>
+        <span class="text-closed"><%= resort.lifts.status[liftName] %></span>
+      </div>
       <% } %>
-    </ul>
-    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
-  </body>
-</html>
+    </div>
+    <div class="weather-container">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur,
+        illum, consectetur aliquam assumenda quasi ut minus voluptatum earum
+        beatae, ullam veritatis consequuntur. Est dolorem tempore odio assumenda
+        molestiae eius dolore?
+      </p>
+    </div>
+  </div>
+</main>
+
+<script src="../javascripts/liftStatus.js"></script>

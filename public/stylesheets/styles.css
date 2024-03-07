@@ -225,12 +225,24 @@ select {
   text-decoration: none;
 }
 
+.inline-block {
+  display: inline-block;
+}
+
 /* Colors  */
 .text-dark {
   color: rgba(var(--clr-darkest), 1);
 }
 .text-light {
   color: rgba(var(--clr-lightest), 1);
+}
+
+.text-open {
+  color: green;
+}
+
+.text-closed {
+  color: red;
 }
 /* typography */
 
@@ -306,3 +318,40 @@ select {
 }
 
 /* Show */
+.show-container {
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  border: 1px solid aqua;
+}
+.resort-content-container {
+  width: 95%;
+  border: 1px solid red;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+@media (min-width: 45em) {
+  .resort-content-container {
+    width: 85%;
+  }
+}
+
+.lift-card {
+  width: 100%;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  border: 1px solid purple;
+  background-color: rgba(var(--clr-light), 0.2);
+  border-radius: 0.5rem;
+}
+
+.weather-container {
+  border: 1px solid blue;
+  width: 50%;
+}
+
+.card-container {
+  border: 1px solid green;
+  width: 50%;
+}

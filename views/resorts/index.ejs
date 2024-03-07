@@ -1,55 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index Ski</title>
+<% layout("layouts/boilerplate") %>
+<div class="flex flex-container text-center top text-light">
+  <h1>Lorem ipsum dolor sit amet</h1>
+  <h2>
+    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+    dolore magna aliqua. Non consectetur a erat nam at lectus urna duis
+    convallis. Vel risus commodo viverra maecenas accumsan lacus.
+  </h2>
+</div>
+<!-- Sort Selector -->
+<div class="flex sort-container">
+  <label for="sortCriteria">Sort By:</label>
+  <select id="sortCriteria" onchange="sortResorts(this.value)">
+    <option value="alphabetical">Alphabetical</option>
+    <option value="state">State</option>
+  </select>
+</div>
+<!-- Resort Container -->
+<div class="flex resort-container">
+  <% for (let resort of skiResorts) { if (resort.country === "US" ||
+  resort.country === "CA") { %>
+  <a class="text-decoration-none" href="/resorts/<%= resort.slug %>"
+    ><div class="resort-card">
+      <h3 class="resort-card--title"><%= resort.name %></h3>
+      <p class="resort-card--body">
+        <%= resort.region %>, <%= resort.country %>
+      </p>
+    </div></a
+  >
+  <% } }%>
+</div>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="/stylesheets/styles.css" />
-    <script src="javascripts/sortResorts.js"></script>
-  </head>
-
-  <body>
-    <div class="flex flex-container text-center top text-light">
-      <h1>Lorem ipsum dolor sit amet</h1>
-      <h2>
-        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-        et dolore magna aliqua. Non consectetur a erat nam at lectus urna duis
-        convallis. Vel risus commodo viverra maecenas accumsan lacus.
-      </h2>
-    </div>
-    <!-- Sort Selector -->
-    <div class="flex sort-container">
-      <label for="sortCriteria">Sort By:</label>
-      <select id="sortCriteria" onchange="sortResorts(this.value)">
-        <option value="alphabetical">Alphabetical</option>
-        <option value="state">State</option>
-      </select>
-    </div>
-    <!-- Resort Container -->
-    <div class="flex resort-container">
-      <% for (let resort of skiResorts) { if (resort.country === "US" ||
-      resort.country === "CA") { %>
-      <a class="text-decoration-none" href="/resorts/<%= resort.slug %>"
-        ><div class="resort-card">
-          <h3 class="resort-card--title"><%= resort.name %></h3>
-          <p class="resort-card--body">
-            <%= resort.region %>, <%= resort.country %>
-          </p>
-        </div></a
-      >
-      <% } }%>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
-  </body>
-</html>
+<script src="javascripts/sortResorts.js"></script>
