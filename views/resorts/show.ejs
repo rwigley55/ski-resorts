@@ -1,7 +1,9 @@
 <% layout("layouts/boilerplate") %>
 <main class="flex show-container">
-  <h1><%= resort.name %> <%= resort.region %></h1>
-
+  <h1><%= resort.name %>, <%= resort.region %></h1>
+  <div class="map-container">
+    <div id="map" class="show-map"></div>
+  </div>
   <div class="flex resort-content-container">
     <div class="card-container inline-block flow">
       <h2>Lift Status</h2>
@@ -13,14 +15,34 @@
       <% } %>
     </div>
     <div class="weather-container">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur,
-        illum, consectetur aliquam assumenda quasi ut minus voluptatum earum
-        beatae, ullam veritatis consequuntur. Est dolorem tempore odio assumenda
-        molestiae eius dolore?
-      </p>
+      <div class="weather--today">
+        <%= weather.Headline.Text %>
+        <img
+          src="https://developer.accuweather.com/sites/default/files/0<%= weather.DailyForecasts[0].Day.Icon
+          %>-s.png"
+          alt=""
+        />
+        Max: <%= weather.DailyForecasts[0].Temperature.Maximum.Value %>F Min:
+        <%= weather.DailyForecasts[0].Temperature.Minimum.Value %>F
+      </div>
+
+      <div class="weather--tomorrow">
+        <%= weather.Headline.Text %> Max: <%=
+        weather.DailyForecasts[1].Temperature.Maximum.Value %>F Min: <%=
+        weather.DailyForecasts[1].Temperature.Minimum.Value %>F
+      </div>
     </div>
   </div>
 </main>
 
 <script src="../javascripts/liftStatus.js"></script>
+<script>
+  const weatherToken = "<%- process.env.ACUWEATHER_API_KEY %>";
+  const mapToken = "<%- process.env.MAPBOX_TOKEN %>";
+  const coords = [
+    "<%= resort.location.longitude %>",
+    "<%= resort.location.latitude %>",
+  ];
+</script>
+<script src="../javascripts/showPageMap.js"></script>
+<script src="../javascripts/getLocationKey.js"></script>

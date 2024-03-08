@@ -70,6 +70,37 @@ const fetchAllSkiResorts = async () => {
   }
 };
 
+// Weather Settup ***************************************************
+const getLocationKey = async (lat, long) => {
+  const base =
+    "http://dataservice.accuweather.com/locations/v1/cities/geoposition/search";
+  const query = `?apikey=${process.env.ACUWEATHER_API_KEY}&q=${lat}%2C${long}`;
+  try {
+    const data = await axios.get(base + query);
+    const locationKey = data.data.Key;
+    console.log("Location Key:", locationKey);
+    console.log("Lat:", lat);
+    console.log("Long:", long);
+    return locationKey;
+  } catch (error) {
+    console.error("Error fetching location key:", error);
+    throw error; // Rethrow the error to handle it elsewhere if needed
+  }
+};
+
+const getWeatherData = async (locationKey) => {
+  const base = "http://dataservice.accuweather.com/forecasts/v1/daily/5day/";
+  const query = `${locationKey}?apikey=${process.env.ACUWEATHER_API_KEY}&details=true`;
+  try {
+    const weatherData = await axios.get(base + query);
+    return weatherData.data;
+  } catch (error) {
+    console.log("error:", error);
+    throw error;
+  }
+};
+// ***************************************************
+
 // Fetch all ski resorts and store them in a variable
 const initializeApp = async () => {
   const allSkiResorts = await fetchAllSkiResorts();
@@ -82,8 +113,17 @@ const initializeApp = async () => {
     if (resortData.length === 0) {
       return res.status(404).send("Ski resort not found");
     }
+    const locationKey = await getLocationKey(
+      resortData.location.latitude,
+      resortData.location.longitude
+    );
 
-    res.render("resorts/show", { resort: resortData });
+    console.log(locationKey);
+
+    const weatherData = await getWeatherData(locationKey);
+    // console.log(weatherData);
+
+    res.render("resorts/show", { resort: resortData, weather: weatherData });
   });
 
   // Index route to display a list of ski resorts
