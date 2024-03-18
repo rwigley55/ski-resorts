@@ -382,7 +382,10 @@ select {
 }
 
 .top h1 {
-  font-weight: var(--fw-400);
+  margin: 0 auto;
+  font-weight: var(--fw-500);
+  backdrop-filter: blur(15px);
+  padding: 1rem;
 }
 
 .top h2 {
@@ -399,6 +402,10 @@ select {
   gap: 1rem;
   justify-content: center;
   margin: 3rem 0rem;
+}
+
+.sort-container {
+  margin: 0rem 3rem;
 }
 
 /* Show */
