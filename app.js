@@ -78,9 +78,6 @@ const getLocationKey = async (lat, long) => {
   try {
     const data = await axios.get(base + query);
     const locationKey = data.data.Key;
-    console.log("Location Key:", locationKey);
-    console.log("Lat:", lat);
-    console.log("Long:", long);
     return locationKey;
   } catch (error) {
     console.error("Error fetching location key:", error);
