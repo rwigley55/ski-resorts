@@ -14,6 +14,9 @@ This project is primarily powered using the three pillars of Front-End web devel
 - [AccuWeather](https://developer.accuweather.com/)
 - [Mapbox](https://www.mapbox.com/)
 
+## Screenshots
+![image](https://github.com/rwigley55/ski-resorts/assets/66136747/a23b9e93-3211-49ed-bc4a-5851a44c4dbd)
+
 ## To-Dos
 
 - [ ] Search
