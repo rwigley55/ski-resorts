@@ -8,6 +8,8 @@ const ejsMate = require("ejs-mate");
 const axios = require("axios");
 const app = express();
 
+const home = require("./routes/home");
+
 // EJS
 app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");

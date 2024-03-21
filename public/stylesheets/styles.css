@@ -244,11 +244,109 @@ select {
 .text-closed {
   color: red;
 }
+
+.home-title {
+  font-size: 2em;
+}
+
+div.home-container > p {
+  font-size: 1em;
+}
+
+@media (min-width: 45em) {
+  .home-title {
+    font-size: 6em;
+    font-weight: var(--fw-700);
+    text-transform: uppercase;
+  }
+
+  div.home-container > p {
+    font-size: 1.9em;
+  }
+}
 /* typography */
 
 /* ----------------------  */
 /* Componenets             */
 /* ----------------------  */
+
+/* Home button */
+.home-button {
+  font: inherit;
+  color: rgba(var(--clr-darkest), 1);
+  font-weight: 700;
+  padding: 0.75em 3em;
+  background: rgba(var(--clr-light), 1);
+  border: 0.1em solid rgba(var(--clr-light), 1);
+  border-radius: 100vw;
+  cursor: pointer;
+  transition: background-color 250ms;
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* .home-button:hover,
+.home-button:focus-visible {
+  background: hsl(185, 53%, 34%);
+} */
+
+button.home-button > span {
+  position: absolute;
+  z-index: -1;
+  width: 33.333%;
+  height: 100%;
+
+  background: transparent;
+  opacity: 0.5;
+}
+
+button.home-button > :first-child {
+  left: 0;
+  top: 0;
+}
+button.home-button > :last-child {
+  right: 0;
+  top: 0;
+}
+
+button.home-button::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: rgba(var(--clr-med), 1);
+  width: 10%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  inset: 0;
+  margin: auto;
+  opacity: 0;
+
+  transition: transform 1000ms 200ms, opacity 200ms;
+}
+
+button.home-button:hover::before {
+  transform: scale(21);
+  opacity: 1;
+
+  transition: transform 2000ms, opacity 500ms;
+}
+
+button.home-button:has(:first-child:hover)::before {
+  margin-left: 0;
+}
+
+button.home-button:has(:last-child:hover)::before {
+  margin-right: 0;
+}
+
+button.home-button:has(:first-child:hover)::before,
+button.home-button:has(:last-child:hover)::before {
+  transition: transform 1000ms, opacity 250ms;
+}
+
+/* ***************************** */
 
 .resort-card {
   border: 2px solid rgba(var(--clr-dark), 0.05);
@@ -358,6 +456,15 @@ select {
 /* Layout                          */
 /* --------------------------------*/
 
+.home-background {
+  background-image: url(../imgs/background-image--home.jpg);
+  background-size: cover;
+  background-position: bottom center;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
 .flex-container {
   padding-inline: 1rem;
   padding-bottom: 4rem;
@@ -396,6 +503,12 @@ select {
   backdrop-filter: blur(15px);
 }
 /* Home */
+.home-container {
+  flex-direction: column;
+  align-items: center;
+  backdrop-filter: blur(20px);
+  padding: 1em;
+}
 /* Index */
 .resort-container {
   flex-wrap: wrap;
